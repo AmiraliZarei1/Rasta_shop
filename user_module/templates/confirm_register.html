@@ -1,72 +1,69 @@
 {% extends '_layout.html' %}
 
 {% block title %}
-ثبت نام
+    ثبت نام
 {% endblock %}
 
 
 {% block content %}
     <div class="container">
-            <div class="auth shadow-box">
-                <div class="row" style="min-height: inherit;">
-                    <div class="col-lg-8">
-                        <div class="auth-forms">
-                            <div class="auth-forms-item">
-                                <div class="auth-logo d-lg-none d-block">
-                                    <a href=""><img src="/static/img/default-icon/logo.png" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="auth-title">
-                                    <h3>کد فعالسازی</h3>
-                                    <p class="my-3 text-muted">اگر قبلا ثبت نام کرده اید وارد شوید</p>
-                                </div>
-                                <div class="auth-form">
-                                    <form action="" method="post" dir="rtl">
-                                        {% csrf_token %}
-                                        {{ confirm_form }}
-                                        {% if confirm_form.errors %}
-                                        	<div class="alert alert-warning">{{ confirm_form.errors }}</div>
-                                        {% endif %}
-                                        <div class="d-flex justify-content-center flex-column align-items-center flex-wrap">
-                                            <button type="submit" class="btn-login w-50 waves-effect waves-light"><i class="bi bi-person"></i>
-                                                 تایید
-                                            </button>
-                                            <a class="btn-login login w-50 waves-effect waves-light" href="login.html"><i class="bi bi-lock"></i>
-                                                ورود به سایت
-                                            </a>
-                                        </div>
-
-                                    </form>
-                                    <div class="social mt-3">
-                                        <a href="" class="bi bi-google"></a>
-                                        <a href="" class="bi bi-facebook"></a>
-                                        <a href="" class="bi bi-github"></a>
+        <div class="auth shadow-box">
+            <div class="row" style="min-height: inherit;">
+                <div class="col-lg-8">
+                    <div class="auth-forms">
+                        <div class="auth-forms-item">
+                            <div class="auth-logo d-lg-none d-block">
+                                <a href=""><img src="/static/img/custom-images/LogoWhite.png" class="img-fluid" alt=""></a>
+                            </div>
+                            <div class="auth-title">
+                                <h3>کد فعالسازی</h3>
+                                <p class="my-3 text-muted">اگر قبلا ثبت نام کرده اید وارد شوید</p>
+                            </div>
+                            <div class="auth-form">
+                                <form action="" method="post" dir="rtl">
+                                    {% csrf_token %}
+                                    {% if error %}
+                                        <div class="alert alert-warning">کد اشتباه است</div>
+                                    {% endif %}
+                                    {{ confirm_form }}
+                                    <div class="d-flex justify-content-center flex-column align-items-center flex-wrap">
+                                        <button type="submit" class="btn-login w-50 waves-effect waves-light"><i
+                                                class="bi bi-person"></i>
+                                            تایید
+                                        </button>
+                                        <a class="btn-login login w-50 waves-effect waves-light" href="login.html"><i
+                                                class="bi bi-lock"></i>
+                                            ورود به سایت
+                                        </a>
                                     </div>
-                                </div>
+
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="auth-side d-lg-block d-none">
-                            <div class="background">
-                                <div class="cube"></div>
-                                <div class="cube"></div>
-                                <div class="cube"></div>
-                                <div class="cube"></div>
-                                <div class="cube"></div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="auth-side d-lg-block d-none">
+                        <div class="background">
+                            <div class="cube"></div>
+                            <div class="cube"></div>
+                            <div class="cube"></div>
+                            <div class="cube"></div>
+                            <div class="cube"></div>
+                        </div>
+                        <div class="auth-desc">
+                            <div class="auth-logo">
+                                <a href="{% url 'Home' %}"><img src="/static/img/custom-images/LogoWhite.png"
+                                                                class="img-fluid" alt=""></a>
                             </div>
-                            <div class="auth-desc">
-                                <div class="auth-logo">
-                                    <a href=""><img src="/static/img/default-icon/logo.png" class="img-fluid" alt=""></a>
-                                </div>
-                                <h3 class="fw-bold">خوش آمدید</h3>
-                                <p class="my-3">
-                                    اگر قبلا ثبت نام کرده اید میتوانید از این قسمت وارد شوید
-                                </p>
-                                <a href="login.html" class="btn-login-page waves-effect waves-light">وارد شوید</a>
-                            </div>
+                            <h3 class="fw-bold">خوش آمدید</h3>
+                            <p class="my-3">
+                                اگر قبلا ثبت نام کرده اید روی دکمه ورود کلیک کنید
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 {% endblock %}

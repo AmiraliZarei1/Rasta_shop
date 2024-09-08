@@ -13,7 +13,7 @@
                     <div class="auth-forms">
                         <div class="auth-forms-item">
                             <div class="auth-logo d-lg-none d-block">
-                                <a href="{% url 'Home' %}"><img src="/static/img/custom-images/logo.png" class="img-fluid"
+                                <a href="{% url 'Home' %}"><img src="/static/img/custom-images/LogoWhite.png" class="img-fluid"
                                                           alt=""></a>
                             </div>
                             <div class="auth-title">
@@ -23,6 +23,9 @@
                             <div class="auth-form" dir="rtl">
                                 <form action="" method="post">
                                     {% csrf_token %}
+                                {% if error %}
+                                    <div class="alert alert-warning">کاربری با چنین اطلاعاتی وجود دارد</div>
+                                {% endif %}
                                     {% if register.errors %}
                                         <div class="alert alert-warning">{{ register.errors }}</div>
                                     {% endif %}

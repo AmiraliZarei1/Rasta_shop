@@ -1,0 +1,31 @@
+{% extends '_layout.html' %}
+
+
+{% block title %}
+	سبد خرید
+{% endblock %}
+
+
+{% block content %}
+	    <div class="content">
+        <div class="cart">
+            <div class="container-fluid">
+                <div class="cart-content shadow-box">
+                    <div class="cart-empty">
+                        <div class="cart-empty-icon mb-0">
+                            <img src="/static/img/default-icon/empty-cart.svg" alt="" width="300" class="img-fluid">
+                        </div>
+                        <div class="cart-empty-title">
+                            <h2 class="text-muted">سبد خرید شما خالیست!</h2>
+                            <div class="cart-empty-offer">
+                                <a href="{% url 'Home' %}"><span class="danger-span-border">برگشت به خانه</span></a>
+                                <a href="{% url 'product_list' %}"><span class="danger-span-border">صفحه محصولات</span></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

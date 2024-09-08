@@ -250,7 +250,9 @@
                                                             <div class="comment-item-avatar d-sm-flex d-none">
                                                                 <div class="comment-item-avatar-img ">
                                                                     <a href="" class="rounded-circle">
-                                                                        <img src="{{ comment.user.avatar.url }}"
+                                                                        <img src="{% if comment.user.avatar %}
+                                                                        	{{ comment.user.avatar.url }}{% else %}/static/img/default-icon/user-profile.png
+                                                                        {% endif %}"
                                                                              class="rounded-circle"
                                                                              width="40" alt="">
                                                                     </a>
@@ -260,7 +262,9 @@
                                                                 <div class="comment-item-avatar d-sm-none d-flex mb-2">
                                                                     <div class="comment-item-avatar-img ">
                                                                         <a href="" class="rounded-circle">
-                                                                            <img src="{{ comment.user.avatar.url }}"
+                                                                            <img src="{% if comment.user.avatar %}
+                                                                        	{{ comment.user.avatar.url }}{% else %}/static/img/default-icon/user-profile.png
+                                                                        {% endif %}"
                                                                                  class="rounded-circle"
                                                                                  width="40" alt="">
                                                                         </a>
@@ -268,7 +272,8 @@
                                                                 </div>
                                                                 <div class="comment-item-title">
                                                                     <div class="comment-date">
-                                                                        <p class="text-muted comment-date-auther" id="name-user">{{ comment.user.first_name }} {{ comment.user.last_name }}</p>
+                                                                        <p class="text-muted comment-date-auther"
+                                                                           id="name-user">{{ comment.user.first_name }} {{ comment.user.last_name }}</p>
                                                                         <p class="text-muted comment-date-speractor">
                                                                             –</p>
                                                                         <p class="text-muted comment-date-date">{{ comment.create_date|jdate }}</p>
@@ -345,7 +350,8 @@
                                                     {% if request.user.is_authenticated %}
                                                         <input type="hidden" value="" id="set-parent-comment">
                                                         <div class="comment-form">
-                                                            <h6 class="tab-title mt-3" id="text-comment">دیدگاه خود را بنویسید</h6>
+                                                            <h6 class="tab-title mt-3" id="text-comment">دیدگاه خود را
+                                                                بنویسید</h6>
                                                             <form action="">
                                                                 <div class="form-group mb-2">
                                                                     <label for="commentbody" class="form-label my-3">دیدگاه

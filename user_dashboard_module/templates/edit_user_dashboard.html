@@ -16,8 +16,10 @@
                             <div class="ui-box-item">
                                 <div class="ui-box-item-desc" style="border-radius: 10px;background-color: #fff;">
                                     <div class="dashboard-user-img-profile">
-                                        <img src="{{ user.avatar.url }}" width="80" height="80"
-                                             class="img-fluid rounded-circle" alt="">
+                                        <img src="{% if user.avatar %}
+                                            	{{ user.avatar.url }}{% else %}/static/img/default-icon/user-profile.png
+                                            {% endif %}" width="80" height="80"
+                                             class="rounded-circle" alt="">
                                     </div>
                                     <div class="dashboard-user-info">
                                         <h6 class="user-name">{{ user.first_name }}{{ user.last_name }}</h6>

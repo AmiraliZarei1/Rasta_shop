@@ -2,7 +2,7 @@
 from itertools import count
 
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import render
 from django.views.generic import View
 from django.utils.decorators import method_decorator
@@ -15,13 +15,19 @@ from product_module.models import Product_Model
 @method_decorator(login_required , name='dispatch')
 class UserBasket(View):
     def get(self, request):
+
         user_id = request.user.id
         order:Order = Order.objects.filter(user_id=user_id).first()
-        details = OrderDetail.objects.filter(order_id=order.id)
-        return render(request , 'user_basket.html' , {
-            'order': order ,
-            'details': details
-        })
+        if not order:
+            return render(request , 'empty_cart.html' , {
+                
+            })
+        else:
+            details = OrderDetail.objects.filter(order_id=order.id)
+            return render(request , 'user_basket.html' , {
+                'order': order ,
+                'details': details
+            })
 
 
 

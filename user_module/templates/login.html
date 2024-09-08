@@ -13,7 +13,7 @@
                         <div class="auth-forms-item">
                             <div class="auth-title">
                                 <div class="auth-logo d-lg-none d-block">
-                                    <a href="{% url 'Home' %}"><img src="/static/img/custom-images/logo.png"
+                                    <a href="{% url 'Home' %}"><img src="/static/img/custom-images/LogoWhite.png"
                                                                     class="" alt=""></a>
                                 </div>
                                 <h3>وارد شوید</h3>
@@ -22,8 +22,8 @@
                             <div class="auth-form">
                                 <form action="" method="post" dir="rtl">
                                     {% csrf_token %}
-                                    {% if login_form.errors %}
-                                        <div class="alert alert-warning">{{ login_form.errors }}</div>
+                                    {% if error %}
+                                        <div class="alert alert-warning">نام کاربری یا رمز عبور اشتباه است</div>
                                     {% endif %}
                                     {{ login_form }}
                                     <div class="d-flex justify-content-center align-items-center">
@@ -64,14 +64,12 @@
                         </div>
                         <div class="auth-desc">
                             <div class="auth-logo">
-                                <a href="{% url 'Home' %}"><img src="/static/img/default-icon/logo.png"
+                                <a href="{% url 'Home' %}"><img src="/static/img/custom-images/LogoWhite.png"
                                                                 class="img-fluid" alt=""></a>
                             </div>
                             <h3 class="fw-bold">خوش آمدید</h3>
                             <p class="my-3">برای ورود به سایت باید در سایت ثبت نام کنید
                             </p>
-                            <a href="{% url 'register' %}" class="btn-login-page waves-effect waves-light">ثبت نام در
-                                سایت</a>
                         </div>
                     </div>
                 </div>
