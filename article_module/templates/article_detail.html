@@ -1,0 +1,58 @@
+{% extends '_layout.html' %}
+{% load poll_extras %}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+
+{% block content %}
+        <div class="content" dir="rtl">
+        <div class="blog-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 order-2">
+                        <div class="category-filters">
+                            <div class="category-filter">
+                                <div class="category-filter-box">
+                                    <div class="category-filter-box-title">
+                                        <h4 class="fw-bold">
+                                            برچسب ها
+                                        </h4>
+                                    </div>
+                                    <div class="category-filter-box-desc">
+                                        <div class="d-flex flex-wrap align-items-center justify-content-center">
+                                            <a href="blog-detail.html" class="blog-tag">لورم ایپسوم</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 order-1">
+                        <div class="blog-post shadow-box">
+                            <div class="blog-post-title">
+                                <h3>{{ article.title }}</h3>
+                                <div class="blog-post-title-items">
+                                    <div class="blog-post-title-item">
+                                        <img src="{{ article.author.avatar.url }}" class="rounded-circle" alt="">
+                                        <p class="text-muted">{{ article.author.first_name }}{{ article.author.last_name }}</p>
+                                    </div>
+                                    <div class="blog-post-title-item">
+                                        <i class="bi bi-alarm"></i>
+                                        <p class="text-muted">{{ article.create_date|jdate }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="{{ article.image.url }}" alt="" class="rounded" style="width: 1050px;height: 460px">
+                            <div class="blog-post-content">
+                                <p>{{ article.text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

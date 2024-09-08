@@ -1,0 +1,241 @@
+{% extends '_layout.html' %}
+
+
+{% block title %}
+	داشبورد
+{% endblock %}
+
+
+{% block content %}
+	    <div class="content">
+        <div class="dashboard" dir="rtl">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="ui-boxs">
+                            <div class="ui-box">
+                                <div class="ui-box-item">
+                                    <div class="ui-box-item-desc" style="border-radius: 10px;background-color: #fff;">
+                                        <div class="dashboard-user-img-profile">
+                                            <img src="{{ user.avatar.url }}" width="80" height="80"
+                                                class="img-fluid rounded-circle" alt="avatar">
+                                        </div>
+                                        <div class="dashboard-user-info">
+                                            <h6 class="user-name">{{ user.first_name }} {{ user.last_name }}</h6>
+                                            <h6 class="text-muted user-number">{{ user.username }}</h6>
+                                        </div>
+                                        <div class="dashboard-user-btn">
+                                            <div>
+                                                <i class="bi bi-arrow-left-circle"></i>
+                                                <a href="index.html" class="text-muted">خروج از حساب</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-box">
+                                <div class="ui-box-item">
+                                    <div class="ui-box-item-title" style="padding: 15px;">
+                                        <h4 class="fw-bold">
+                                            حساب کاربری شما
+                                        </h4>
+                                    </div>
+                                    <div class="ui-box-item-desc p-0">
+                                        <ul class="nav flex-column sidebar-menu">
+                                            <li class="nav-item active">
+                                                <a href="{% url 'main-dashboard' %}" class="nav-link text-muted">
+                                                    <i class="bi bi-house"></i>
+                                                    <span>داشبورد</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{% url 'edit-user' %}" class="nav-link text-muted">
+                                                    <i class="bi bi-person-circle"></i>
+                                                    <span>تغییر اطلاعات</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{% url 'change-pass-dash' %}" class="nav-link text-muted">
+                                                    <i class="bi bi-key"></i>
+                                                    <span>تغییر رمز عبور</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="order.html" class="nav-link text-muted">
+                                                    <i class="bi bi-basket-fill"></i>
+                                                    <span>سفارشات</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="comments.html" class="nav-link text-muted">
+                                                    <i class="bi bi-pencil"></i>
+                                                    <span>نقد و نظرات</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="content-box" style="padding:40px 20px;">
+                            <div class="row g-3">
+                                <div class="col-xl-3 col-6 dashboard-cart-col">
+                                    <div class="dashboard-cart shadow-box">
+                                        <div class="dashboard-cart-title"><i class="bi bi-bag-check"></i> سفارشات تکمیل
+                                            شده</div>
+                                        <div class="dashboard-cart-footer" style="background: #0476D0;">0</div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-6 dashboard-cart-col">
+                                    <div class="dashboard-cart shadow-box">
+                                        <div class="dashboard-cart-title"><i class="bi bi-activity"></i> سفارشات در
+                                            انتظار بررسی</div>
+                                        <div class="dashboard-cart-footer" style="background: #F6A21E;">0</div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-6 dashboard-cart-col">
+                                    <div class="dashboard-cart shadow-box">
+                                        <div class="dashboard-cart-title"><i class="bi bi-x-octagon"></i> سفارشات لغو
+                                            شده</div>
+                                        <div class="dashboard-cart-footer" style="background: #0db47f;">0</div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-6 dashboard-cart-col">
+                                    <div class="dashboard-cart shadow-box">
+                                        <div class="dashboard-cart-title"><i class="bi bi-repeat"></i> سفارشات مرجوعی
+                                        </div>
+                                        <div class="dashboard-cart-footer" style="background: #BA0F30;">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="">
+                                    <div class="ui-box">
+                                        <div class="ui-box-item ui-box-white">
+                                            <div class="ui-box-item-title">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="fw-bold">
+                                                        اطلاعات شخصی
+                                                    </h4>
+                                                    <a class="btn-main btn-main-primary waves-effect waves-light waves-effect waves-light" href="">ویرایش <i
+                                                            class="bi bi-pencil-fill"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="ui-box-item-desc p-0">
+                                                <table class="table main-table shadow-none main-table-2">
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <h6 class="text-muted">نام و نام خانوادگی</h6>
+                                                            <p class="fw-bold mt-2">{{ user.first_name }}{{ user.last_name }}</p>
+                                                        </td>
+                                                        <td colspan="1">
+                                                            <h6 class="text-muted">نام کاربری</h6>
+                                                            <p class="fw-bold mt-2">{{ user.username }}</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <h6>پست الکترونیک</h6>
+                                                            <p class="fw-bold mt-2">{{ user.email }}</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <h6>عضویت</h6>
+                                                            <p class="fw-bold mt-2">{{ user.date_joined }}</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="ui-boxs">
+                                        <div class="ui-box">
+                                            <div class="ui-box-item ui-box-white">
+                                                <div class="ui-box-item-title" style="padding: 15px;">
+                                                    <h4 class="fw-bold">
+                                                        آخرین سفارش ها
+                                                    </h4>
+                                                </div>
+                                                <div class="ui-box-item-desc p-0">
+                                                    <div class="orders">
+                                                        <div class="order-item">
+                                                            <a href="order-detail.html">
+                                                                <div class="order-item-status">
+                                                                    <div class="order-item-status-item">
+                                                                        <p><i class="bi bi-bag-check-fill"></i>
+                                                                            <span>تحویل شده</span></p>
+                                                                    </div>
+                                                                    <div class="order-item-status-item">
+                                                                        <p><i
+                                                                                class="bi bi-arrow-left pointer text-dark"></i>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="order-item-detail">
+                                                                    <ul class="nav">
+                                                                        <li class="nav-item text-muted">29 خرداد 1399
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <span class="text-mute">کد سفارش</span>
+                                                                            <strong>17745651</strong>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <span class="text-mute">مبلغ</span>
+                                                                            <strong>25,000,000 تومان</strong>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="order-item-product-list">
+                                                                    <div class="order-item-product-list-item">
+                                                                        <img src="img/product/product-image1.jpg" alt=""
+                                                                            class="img-thumbnail" width="70"
+                                                                            height="70">
+                                                                    </div>
+                                                                    <div class="order-item-product-list-item">
+                                                                        <img src="img/product/product-image3.jpg" alt=""
+                                                                            class="img-thumbnail" width="70"
+                                                                            height="70">
+                                                                    </div>
+                                                                    <div class="order-item-product-list-item">
+                                                                        <img src="img/product/product-image4.jpg" alt=""
+                                                                            class="img-thumbnail" width="70"
+                                                                            height="70">
+                                                                    </div>
+                                                                    <div class="order-item-product-list-item">
+                                                                        <img src="img/product/product-image5.jpg" alt=""
+                                                                            class="img-thumbnail" width="70"
+                                                                            height="70">
+                                                                    </div>
+                                                                    <div class="order-item-product-list-item">
+                                                                        <img src="img/product/product-image6.jpg" alt=""
+                                                                            class="img-thumbnail" width="70"
+                                                                            height="70">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="order-item-show">
+                                                                    <p><i class="bi bi-card-list"></i> مشاهده فاکتور</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end dashboard -->
+    </div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends '_layout.html' %}
+
+{% block title %}
+    ثبت نام
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="auth shadow-box">
+            <div class="row" style="min-height: inherit;">
+                <div class="col-lg-8">
+                    <div class="auth-forms">
+                        <div class="auth-forms-item">
+                            <div class="auth-logo d-lg-none d-block">
+                                <a href="{% url 'Home' %}"><img src="/static/img/custom-images/logo.png" class="img-fluid"
+                                                          alt=""></a>
+                            </div>
+                            <div class="auth-title">
+                                <h3>ثبت نام کنید</h3>
+                                <p class="my-3 text-muted">اگر قبلا ثبت نام کرده اید وارد شوید</p>
+                            </div>
+                            <div class="auth-form" dir="rtl">
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    {% if register.errors %}
+                                        <div class="alert alert-warning">{{ register.errors }}</div>
+                                    {% endif %}
+                                    {{ register }}
+                                    <div class="d-flex justify-content-center flex-column align-items-center flex-wrap" style="margin: 20px">
+                                        <button type="submit" class="btn-login w-50 waves-effect waves-light"><i
+                                                class="bi bi-person"></i>
+                                            ثبت نام
+                                        </button>
+                                        <a class="btn-login login w-50 waves-effect waves-light"
+                                           href="{% url 'login' %}"><i class="bi bi-lock"></i>
+                                            ورود
+                                        </a>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="auth-side d-lg-block d-none">
+                        <div class="background">
+                            <div class="cube"></div>
+                            <div class="cube"></div>
+                            <div class="cube"></div>
+                            <div class="cube"></div>
+                            <div class="cube"></div>
+                        </div>
+                        <div class="auth-desc">
+                            <div class="auth-logo">
+                                <a href=""><img src="/static/img/custom-images/logo.png" class="img-fluid" alt=""></a>
+                            </div>
+                            <h3 class="fw-bold">خوش آمدید</h3>
+                            <p class="my-3">
+                                اگر قبلا ثبت نام کرده اید روی دکمه ورود کلیک کنید تا وارد حساب خود شوید
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

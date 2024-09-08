@@ -1,0 +1,95 @@
+
+{% extends '_layout.html' %}
+{% load poll_extras %}
+
+{% block title %}
+    مقالات
+{% endblock %}
+
+
+{% block content %}
+        <div class="content" dir="rtl">
+
+                <div class="article-latest">
+            <div class="container-fluid">
+                <div class="">
+                    <div class="">
+                        <div class="col-5">
+                            <div class=" d-flex align-items-start justify-content-between">
+                                <h6 class="fw-bold slider-title justify-content-center align-items-center" style="color: #0a58ca">آخرین مقالات سایت</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+                    <div class="col-lg-9">
+                        <div class="blog-content-items">
+                            <div class="row">
+                                {% for article in article %}
+                                <div class="col-md-4 col-sm-6" style="margin: 20px; margin-right: 30px">
+                                    <div class="card blog-content-item shadow-box">
+                                        <div class="card-image">
+                                            <img src="{{ article.image.url }}" class="card-img-top" alt="">
+                                            <div class="card-hover">
+                                                <a href="{% url 'article_detail' article.id %}">مشاهده</a>
+                                            </div>
+                                        </div>
+                                        <a href="blog-detail.html">
+                                            <div class="card-body">
+                                                <h5 class="card-title fw-bold">
+                                                    {{ article.title }}
+                                                </h5>
+                                                <p class="card-text text-muted">
+                                                    {{ article.short_des }}
+                                                </p>
+                                            </div>
+                                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                                <div class="auther d-flex align-items-center">
+                                                    <img src="{{ article.author.avatar.url }}" width="35"
+                                                        class="img-fluid rounded-circle" alt="">
+                                                    <div class="date ms-2">
+                                                        <p class="fw-bold text-muted">{{ article.author.first_name }}{{ article.author.last_name }}</p>
+                                                        <span class="text-muted">{{ article.create_date|jdate }}</span>
+                                                        <span class="text-muted">{{ article.create_date|jtime }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="cat">
+                                                    <a class="blog-tag" href="blog.html">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                </div>
+                                {% endfor %}
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end blog-content -->
+
+{#        <div class="show-more">#}
+{#            <div class="container-fluid">#}
+{#                <div class="row justify-content-center">#}
+{#                    <div class="col-12">#}
+{#                        <div class="show-more-btn">#}
+{#                            <button class="shadow-box waves-effect waves-light">مشاهده بیشتر <i#}
+{#                                    class="bi bi-arrow-down"></i></button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+
+    </div>
+{% endblock %}

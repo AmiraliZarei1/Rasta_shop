@@ -1,0 +1,27 @@
+{% load render_partial %}
+
+    {% include 'header_refrence.html' %}
+    {% block header_link %}
+
+    {% endblock %}
+
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+
+<body>
+{% render_partial 'home_module.views.header_render_partial' %}
+{% block content %}
+
+{% endblock %}
+
+
+{% render_partial 'home_module.views.footer_render_partial' %}
+{% block footer_script %}
+
+{% endblock %}
+
+{% include 'footer_refrence.html' %}
+</body>

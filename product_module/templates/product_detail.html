@@ -1,0 +1,396 @@
+{% extends '_layout.html' %}
+{% load poll_extras %}
+
+{% block title %}
+    {{ products.title }}
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="content" style="padding: 10px 0;" dir="rtl">
+        <!-- start product meta -->
+        <div class="product-meta">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-meta-breadcrumb shadow-sm">
+                            <nav>
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="{% url 'Home' %}">خانه</a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="{% url 'product_list' %}">محصولات</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        <span>{{ products.title }}</span>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary shadow-sm">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                                 class="swiper product-gallery">
+                                <div class="swiper-wrapper" title="product">
+                                    <div class="swiper-slide">
+                                        <div class="swiper-zoom-container">
+                                            <img class="img-fluid" src="{{ products.image.url }}"
+                                                 style="width: 500px;border-radius: 15px"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="">
+                                    <div class="">
+                                        {#                                        <img class="" src="{{ products.image.url }}"/>#}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 border-right-product">
+                            <div class="summary-entry mt-lg-0 mt-4">
+                                <div class="se-title">
+                                    <h2>{{ products.title }}
+                                    </h2>
+                                    <h6 class="text-muted">{{ products.ShortDes }}
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="se-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="readMore1" class="read-more-trigger"></label>
+                                        <div class="se-alert">
+                                            <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                     fill="currentColor" class="bi bi-box-fill me-2"
+                                                     viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                          d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.004-.001.274-.11a.75.75 0 0 1 .558 0l.274.11.004.001 6.971 2.789Zm-1.374.527L8 5.962 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339Z"/>
+                                                </svg>
+                                                <p class="font-14">
+                                                    {{ products.count }} عدد در انبار موجود میباشد
+                                                </p>
+                                            </div>
+                                            <div class="alert alert-info d-flex align-items-center" role="alert">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                     fill="currentColor" class="bi bi-bell me-2" viewBox="0 0 16 16">
+                                                    <path
+                                                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                                                </svg>
+                                                <p class="font-14">
+                                                    بازگشت کالا با دلیل "انصراف از خرید"، فقط در صورت بازنشدن پلمب
+                                                    کالا امکان‌پذیر است.
+                                                </p>
+                                            </div>
+                                            <div class="free-shipping">
+                                                <div class="col-lg-13 title">
+                                                    <h6 class="fw-bold">ارسال رایگان</h6>
+                                                    <p>برای سفارش‌ بالای ۵۰۰ هزار تومان
+                                                    </p>
+                                                </div>
+                                                <img src="/static/img/icon-1/free-shipping.svg" alt=""
+                                                     class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-13 m-auto mt-lg-2 mt-3">
+                                    <div class="se-cart shadow-sm">
+                                        <div class="se-cart-detail">
+                                                <span class="scd-item text-muted">
+                                                    <i class="bi bi-tag"></i>
+                                                    مدل:
+                                                    <a href="">شیائومی</a>
+                                                </span>
+                                            <span class="scd-item text-muted">
+                                                    <i class="bi bi-shop"></i>
+                                                    دسته بندی:
+                                                    <a href="">کالای دیجیتال</a>,
+                                                    <a href="">تلفن همراه</a>,
+                                                    <a href="">شیائومی</a>,
+                                                </span>
+                                            <span class="scd-item text-muted">
+                                                    <i class="bi bi-shield-check"></i>
+                                                    گارانتی:
+                                                    <span class="link">گارانتی 18 ماهه گرین</span>
+                                                </span>
+                                            <span class="scd-item text-muted">
+                                                    <i class="bi bi-tag"></i>
+                                                    برچسب:
+                                                    <a href="">کالای دیجیتال</a>,
+                                                    <a href="">تلفن همراه</a>,
+                                                    <a href="">شیائومی</a>,
+                                                    <a href="">ارزان کالا</a>,
+                                                </span>
+                                        </div>
+                                        <div class="se-cart-price">
+                                            <span class="se-cart-price-new">{{ products.price }} تومان</span>
+                                        </div>
+                                        <div class="se-cart-form">
+                                            <form action="">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-6">
+                                                        <div class="cart-counter">
+                                                            <input type="text" name="count" class="counter"
+                                                                   value="1" id="product-count"
+                                                                   onchange="check_count()">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <button
+                                                                class="shadow-sm fw-bold btn-add-to-cart mt-sm-0 mt-2 waves-effect waves-light"
+                                                                onclick="add_to_order({{ products.id }})">افزودن
+                                                            به سبد
+                                                            خرید
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="product-feature">
+                            <nav class="navbar">
+                                <ul class="navbar-nav justify-content-md-between justify-content-center">
+                                    <li class="nav-item">
+                                        <img src="/static/img/product-feature/product_feauture_1.png" alt="">
+                                        <span>تحویل فوری</span>
+                                    </li>
+                                    <li class="nav-item">
+                                        <img src="/static/img/product-feature/product_feauture_2 (1).png" alt="">
+                                        <span>پرداخت در محل</span>
+                                    </li>
+                                    <li class="nav-item">
+                                        <img src="/static/img/product-feature/product_feauture_3.png" alt="">
+                                        <span>ضمانت اصالت کالا
+                                            </span>
+                                    </li>
+                                    <li class="nav-item">
+                                        <img src="/static/img/product-feature/product_feauture_4.png" alt="">
+                                        <span>ضمانت بازگشت وجه
+                                            </span>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end product meta -->
+    </div>
+
+
+    <!-- start product desc -->
+    <div class="product-descs" id="prodesc">
+        <div class="container-fluid">
+            <div class="product-desc shadow-md">
+                <div class="product-desc-tab">
+                    <ul class="nav" id="productTab" role="tablist">
+                        <li class="nav-item">
+                            <button class=" waves-effect waves-light" id="productDesc" data-bs-toggle="tab"
+                                    data-bs-target="#productDesc-pane" role="tab" type="button" aria-selected="true"><i
+                                    class="bi bi-file-text"></i> توضیحات
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class=" waves-effect waves-light" id="productComment" data-bs-toggle="tab"
+                                    data-bs-target="#productComment-pane" role="tab" type="button"
+                                    aria-selected="false"><i class="bi bi-chat-quote"></i> نظرات
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="product-desc-tab-content">
+                    <div class="tab-content" id="productTabContent">
+                        <div class="tab-pane fade show active product-desc-less-contents" id="productDescLess-pane">
+                        </div>
+                        <div class="tab-pane fade product-desc-contents" id="productDesc-pane">
+                            <div class="product-desc-content">
+                                <input type="checkbox" class="read-more-state" id="readMore2"/>
+                                <!-- والد بیشتر ، کمتر ، تمام متن توضیحات باید داخل این تگ قرار بگیرند -->
+                                <div class="read-more-wrap">
+                                    <h2 class="title gold mb-2">{{ products.title }}</h2>
+                                    <p>{{ products.LongDes }}</p>
+                                </div>
+                                <!-- پایان والد بیشتر کمتر -->
+                                <label for="readMore2" class="read-more-trigger"></label>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade product-comment-content" id="productComment-pane">
+                            <div class="col-md-13 col-12 bg2">
+                                <div class="box_users_comment mt-3 p-4" dir="rtl">
+                                    <div class="row">
+                                        <div class="blog-comment shadow-box">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h6 class="tab-title">
+                                                        <span>{{ comments.count }}</span>
+                                                        <span>دیدگاه برای</span>
+                                                        <span>{{ products.title }}
+                                </span>
+                                                    </h6>
+
+
+                                                    {% for comment in comments %}
+
+                                                        <div class="comment-item">
+                                                            <div class="comment-item-avatar d-sm-flex d-none">
+                                                                <div class="comment-item-avatar-img ">
+                                                                    <a href="" class="rounded-circle">
+                                                                        <img src="{{ comment.user.avatar.url }}"
+                                                                             class="rounded-circle"
+                                                                             width="40" alt="">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-item-desc">
+                                                                <div class="comment-item-avatar d-sm-none d-flex mb-2">
+                                                                    <div class="comment-item-avatar-img ">
+                                                                        <a href="" class="rounded-circle">
+                                                                            <img src="{{ comment.user.avatar.url }}"
+                                                                                 class="rounded-circle"
+                                                                                 width="40" alt="">
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-item-title">
+                                                                    <div class="comment-date">
+                                                                        <p class="text-muted comment-date-auther" id="name-user">{{ comment.user.first_name }} {{ comment.user.last_name }}</p>
+                                                                        <p class="text-muted comment-date-speractor">
+                                                                            –</p>
+                                                                        <p class="text-muted comment-date-date">{{ comment.create_date|jdate }}</p>
+                                                                        <p class="text-muted comment-date-speractor">
+                                                                            –</p>
+                                                                        <p class="text-muted comment-date-date">{{ comment.create_date|jtime }}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-item-content">
+                                                                    <p>{{ comment.text|linebreaks }}
+                                                                    </p>
+                                                                </div>
+
+
+                                                                {% for sub_comment in comment.productcomment_model_set.all %}
+
+                                                                    <div class="comment-item">
+                                                                        <div class="comment-item-avatar d-sm-flex d-none">
+                                                                            <div class="comment-item-avatar-img ">
+                                                                                <a href="" class="rounded-circle">
+                                                                                    <img {% if sub_comment.user.avatar %}src="{{ sub_comment.user.avatar.url }}"
+                                                                                         {% else %}src="/static/img/default-icon/user-profile.png"{% endif %}
+                                                                                         class="rounded-circle"
+                                                                                         width="40" alt="">
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="comment-item-desc"
+                                                                             style="background: #eee;">
+                                                                            <div class="comment-item-avatar d-sm-none d-flex mb-2">
+                                                                                <div class="comment-item-avatar-img ">
+                                                                                    <a href=""
+                                                                                       class="rounded-circle">
+                                                                                        <img {% if sub_comment.user.avatar %}src="{{ sub_comment.user.avatar.url }}"
+                                                                                             {% else %}src="/static/img/default-icon/user-profile.png"{% endif %}
+                                                                                             class="rounded-circle"
+                                                                                             width="40"
+                                                                                             alt="">
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="comment-item-title">
+                                                                                <div class="comment-date">
+                                                                                    <p class="text-muted comment-date-auther">{{ sub_comment.user.first_name }} {{ sub_comment.user.last_name }}</p>
+                                                                                    <p class="text-muted comment-date-speractor">
+                                                                                        –</p>
+                                                                                    <p class="text-muted comment-date-date">{{ sub_comment.create_date|jdate }}</p>
+                                                                                    <p class="text-muted comment-date-speractor">
+                                                                                        –</p>
+                                                                                    <p class="text-muted comment-date-date">{{ sub_comment.create_date|jtime }}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="comment-item-content">
+                                                                                <p>
+                                                                                    {{ sub_comment.text|linebreaks }}
+                                                                                </p>
+                                                                            </div>
+                                                                            <a
+                                                                                    class="btn btn-success px-4 btn-sm rounded-pill"
+                                                                                    onclick="parent_set({{ sub_comment.id }})">پاسخ</a>
+                                                                        </div>
+                                                                    </div>
+                                                                {% endfor %}
+                                                                <a
+                                                                        class="btn btn-success px-4 btn-sm rounded-pill"
+                                                                        onclick="parent_set({{ comment.id }})">پاسخ</a>
+                                                            </div>
+                                                        </div>
+
+
+                                                    {% endfor %}
+
+
+                                                    {% if request.user.is_authenticated %}
+                                                        <input type="hidden" value="" id="set-parent-comment">
+                                                        <div class="comment-form">
+                                                            <h6 class="tab-title mt-3" id="text-comment">دیدگاه خود را بنویسید</h6>
+                                                            <form action="">
+                                                                <div class="form-group mb-2">
+                                                                    <label for="commentbody" class="form-label my-3">دیدگاه
+                                                                        شما
+                                                                        <span
+                                                                                class="text-danger ms-1">*</span></label>
+                                                                    <textarea id="commentbody" rows="7"
+                                                                              class="form-control"
+                                                                              placeholder="دیدگاه شما"
+                                                                              required></textarea>
+                                                                </div>
+                                                                <input type="submit" value="ثبت"
+                                                                       class="btn btn-success rounded-pill w-100 mt-3 shadow-sm"
+                                                                       onclick="send_comment({{ products.id }})">
+                                                            </form>
+                                                        </div>
+                                                    {% else %}
+                                                        <div class="col-md-6 col-12 bg2">
+                                                            <p class="fw-bold text-muted-2">شما هم می توانید در مورد این
+                                                                کالا نظر بدهید</p>
+                                                            <span class="text-muted d-block mt-2 font-14">
+                                            برای ثبت نظر، لازم است ابتدا وارد حساب کاربری خود شوید.
+                                                            </span>
+                                                            <a href="{% url 'login' %}"
+                                                               class="btn btn_custom3 mt-4 shadow-sm waves-effect waves-light"
+                                                               data-bs-toggle="modal" data-bs-target="#modalComment">
+                                                                ورود به حساب کاربری
+                                                            </a>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends '_layout.html' %}
+
+{% block title %}
+    فراموشی رمز عبور
+{% endblock %}
+
+{% block content %}
+    <div class="auths">
+        <div class="container">
+            <div class="auth shadow-box auth-forget" style="min-height: 200px; width: 500px; margin: auto;">
+                <div class="row" style="min-height: inherit;">
+                    <div class="col-12">
+                        <div class="auth-forms">
+                            <div class="auth-forms-item">
+                                <div class="auth-logo" style="padding: 15px 0;">
+                                    <a href="{% url 'Home' %}"><img src="/static/img/default-icon/logo.png"
+                                                                    class="img-fluid"
+                                                                    alt=""></a>
+                                </div>
+                                <div class="auth-title">
+                                    <h3>تایید ایمیل</h3>
+                                    <p class="my-3 text-muted">کد تاییدی را که به ایمیل شما ارسال شده وارد کنید</p>
+                                </div>
+                                <div class="auth-form">
+                                    <form method="post" dir="rtl">
+                                        {% csrf_token %}
+                                        {% if confirm_forget.errors %}
+                                            <div class="alert alert-warning">{{ confirm_forget.errors }}</div>
+                                        {% endif %}
+                                        {{ confirm_forget }}
+                                        <div
+                                                class="d-flex justify-content-center flex-column align-items-center flex-wrap">
+                                            <button class="btn-login login w-50 waves-effect waves-light" href="">
+                                                تایید
+                                            </button>
+                                            <a href="{% url 'Home' %}" class="btn-login w-50 waves-effect waves-light">
+                                                بازگشت به سایت
+                                            </a>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

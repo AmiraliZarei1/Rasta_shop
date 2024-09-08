@@ -1,0 +1,232 @@
+{% extends '_layout.html' %}
+{% load poll_extras %}
+
+{% block title %}
+    سبد خرید
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="content" dir="rtl">
+        <div class="line-steps">
+            <div class="container-fluid">
+                <div class="line-step-container">
+                    <div class="line-step">
+                        <div class="line-step-boxs">
+                            <div class="line-step-box complete">
+                                <a href="cart.html">
+                                    <div class="icon">
+                                        <i class="bi bi-bag"></i>
+                                    </div>
+                                    <p>سبد خرید و تکمیل اطلاعات</p>
+                                </a>
+                            </div>
+                            <div class="line-step-box">
+                                <a href="cart.html">
+                                    <div class="icon">
+                                        <i class="bi bi-file-earmark-break"></i>
+                                    </div>
+                                    <p>تکمیل سفارش</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cart">
+            <div class="container-fluid">
+                <div class="cart-content shadow-box">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="cart-detail">
+                                <div class="table-responsive-lg">
+                                    <table class="table table-hover main-table">
+                                        <thead style="background: #f8f8f8;">
+                                        <tr class="py-3">
+                                            <th scope="col"></th>
+                                            <th scope="col"></th>
+                                            <th scope="col">محصول</th>
+                                            <th scope="col">قیمت</th>
+                                            <th scope="col">تعداد</th>
+                                            <th scope="col">قیمت کل</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for detail in details %}
+                                            <tr>
+                                                <td class="icon"><a href=""><i class="bi bi-x-circle-fill"></i></a></td>
+                                                <td class="position-relative"><img src="{{ detail.product.image.url }}"
+                                                                                   class=""
+                                                                                   alt=""></td>
+                                                <td class="title">{{ detail.product.title }}</td>
+                                                <td class="title"> کالای شماره {{ forloop.counter }} </td>
+                                                <td class="price"><span
+                                                        class="num">{{ detail.product.price|number_digits }}</span><span
+                                                        class="text-muted">تومان</span></td>
+                                                <td class="td-count"><input type="text" name="count" class="counter"
+                                                                            value="{{ detail.count }}"></td>
+                                                <td class="price"><span class="num">{{ detail.final_price|number_digits }}</span><span
+                                                        class="text-muted">تومان</span></td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                    <div class="col-sm-4">
+                                        <div class="cart-footer-update text-sm-end text-center my-sm-0 my-3">
+                                            <form action="">
+                                                <button type="submit"
+                                                        class="btnx btnx-default waves-effect waves-light" style="border-radius: 10px">بروز
+                                                    رسانی سبد
+                                                    خرید
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-arrow-repeat"
+                                                         viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+                                                        <path fill-rule="evenodd"
+                                                              d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content2">
+        <div class="cart">
+            <div class="container-fluid">
+                <div class="cart-content shadow-box">
+                    <div class="alert alert-warning" role="alert">
+                        کوپن تخفیف دارید <span class="alert-link pointer" id="showFormDiscount">برای نوشتن کد اینجا کلیک
+                            کنید</span>
+                    </div>
+                    <div class="category-filter" id="discountForm" style="display:none;">
+                        <div class="category-filter-box">
+                            <div class="category-filter-box-title">
+                                <h4 class="fw-bold">
+                                    اگر شما کد تخفیف دارید ، برای ثبت آن از طریق زیر اقدام کنید.
+                                </h4>
+                            </div>
+                            <div class="category-filter-box-desc">
+                                <form action="">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <label for="discount" class="form-label">کد تخفیف:</label>
+                                                <input type="text" class="form-control rounded-pill" id="discount">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button class="btn btn-primary btn-sm rounded-pill mt-sm-3 mt-0">ثبت کد
+                                                تخفیف
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" dir="rtl">
+                        <div class="col-lg-7">
+                            <div class="checkout-forms">
+                                <div class="checkout-form-title">
+                                    <h5>جزییات پرداخت</h5>
+                                </div>
+                                <div class="checkout-form">
+                                    <form action="">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="ostan" class="form-label">استان <span
+                                                                class="text-danger ms-1">*</span></label>
+                                                        <select id="ostan" class="form-select rounded-pill">
+                                                            <option>تهران</option>
+                                                            <option>یزد</option>
+                                                            <option>اصفهان</option>
+                                                            <option>لرستان</option>
+                                                            <option>کردستان</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="city" class="form-label">شهر <span
+                                                                class="text-danger ms-1">*</span></label>
+                                                        <select id="city" class="form-select rounded-pill">
+                                                            <option>کرج</option>
+                                                            <option>خرم آباد</option>
+                                                            <option>کرمانشاه</option>
+                                                            <option>مهاباد</option>
+                                                            <option>بروجرد</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="street" class="form-label">آدرس دقیق<span
+                                                    class="text-danger ms-1">*</span></label>
+                                            <input type="text" placeholder="نام میدان و خیابان و کوچه و کدپستی" id="street1"
+                                                   class="form-control rounded-pill">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tel" class="form-label">تلفن<span
+                                                    class="text-danger ms-1">*</span></label>
+                                            <input type="text" placeholder="شماره تلفنی را وارد کنید که پاسخگو باشد" id="tel" class="form-control rounded-pill">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5" dir="rtl">
+                            <div class="cart-payment">
+                                <div class="title text-center">
+                                    <h4 class="fw-bold">مجموع کل سبد خرید</h4>
+                                </div>
+                                <table class="table main-table">
+                                    <tr>
+                                        <td class="fw-bold">قیمت کل</td>
+                                        <td class="txt"><span class="fw-bold">{{ order.total_price|number_digits }}</span> <span
+                                                class="text-muted">تومان</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">مالیات (10%)</td>
+                                        <td class="txt"><span class="fw-bold">{{ order.fee|number_digits }}</span> <span
+                                                class="text-muted">تومان</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">حمل و نقل</td>
+                                        <td class="txt"><span class="fw-bold">40000</span> <span
+                                                class="text-muted">تومان</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">مجموع</td>
+                                        <td class="txt"><span class="fw-bold">{{ order.final_price|number_digits }}</span> <span
+                                                class="text-muted">تومان</span></td>
+                                    </tr>
+                                </table>
+
+                                <form action="">
+                                    <button class="btn-bank waves-effect waves-light">اقدام به پرداخت</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+{% endblock %}
