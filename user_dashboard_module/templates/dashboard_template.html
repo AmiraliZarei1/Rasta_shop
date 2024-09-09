@@ -1,13 +1,14 @@
 {% extends '_layout.html' %}
+{% load poll_extras %}
 
 
 {% block title %}
-	داشبورد
+    داشبورد
 {% endblock %}
 
 
 {% block content %}
-	    <div class="content">
+    <div class="content">
         <div class="dashboard" dir="rtl">
             <div class="container-fluid">
                 <div class="row">
@@ -18,9 +19,9 @@
                                     <div class="ui-box-item-desc" style="border-radius: 10px;background-color: #fff;">
                                         <div class="dashboard-user-img-profile">
                                             <img src="{% if user.avatar %}
-                                            	{{ user.avatar.url }}{% else %}/static/img/default-icon/user-profile.png
+                                            	{{ user.avatar.url }}{% else %}/static//static/img/default-icon/user-profile.png
                                             {% endif %}" width="80" height="80"
-                                                class="rounded-circle" alt="avatar">
+                                                 class="rounded-circle" alt="avatar">
                                         </div>
                                         <div class="dashboard-user-info">
                                             <h6 class="user-name">{{ user.first_name }} {{ user.last_name }}</h6>
@@ -63,15 +64,9 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="order.html" class="nav-link text-muted">
+                                                <a href="{% url 'user-basket' %}" class="nav-link text-muted">
                                                     <i class="bi bi-basket-fill"></i>
-                                                    <span>سفارشات</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="comments.html" class="nav-link text-muted">
-                                                    <i class="bi bi-pencil"></i>
-                                                    <span>نقد و نظرات</span>
+                                                    <span>سبد خرید</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -86,21 +81,24 @@
                                 <div class="col-xl-3 col-6 dashboard-cart-col">
                                     <div class="dashboard-cart shadow-box">
                                         <div class="dashboard-cart-title"><i class="bi bi-bag-check"></i> سفارشات تکمیل
-                                            شده</div>
+                                            شده
+                                        </div>
                                         <div class="dashboard-cart-footer" style="background: #0476D0;">0</div>
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-6 dashboard-cart-col">
                                     <div class="dashboard-cart shadow-box">
                                         <div class="dashboard-cart-title"><i class="bi bi-activity"></i> سفارشات در
-                                            انتظار بررسی</div>
+                                            انتظار بررسی
+                                        </div>
                                         <div class="dashboard-cart-footer" style="background: #F6A21E;">0</div>
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-6 dashboard-cart-col">
                                     <div class="dashboard-cart shadow-box">
                                         <div class="dashboard-cart-title"><i class="bi bi-x-octagon"></i> سفارشات لغو
-                                            شده</div>
+                                            شده
+                                        </div>
                                         <div class="dashboard-cart-footer" style="background: #0db47f;">0</div>
                                     </div>
                                 </div>
@@ -121,7 +119,8 @@
                                                     <h4 class="fw-bold">
                                                         اطلاعات شخصی
                                                     </h4>
-                                                    <a class="btn-main btn-main-primary waves-effect waves-light waves-effect waves-light" href="">ویرایش <i
+                                                    <a class="btn-main btn-main-primary waves-effect waves-light waves-effect waves-light"
+                                                       href="{% url 'edit-user' %}">ویرایش <i
                                                             class="bi bi-pencil-fill"></i></a>
                                                 </div>
                                             </div>
@@ -130,7 +129,8 @@
                                                     <tr>
                                                         <td colspan="2">
                                                             <h6 class="text-muted">نام و نام خانوادگی</h6>
-                                                            <p class="fw-bold mt-2">{{ user.first_name }}{{ user.last_name }}</p>
+                                                            <p class="fw-bold mt-2">
+                                                                {{ user.first_name }} {{ user.last_name }}</p>
                                                         </td>
                                                         <td colspan="1">
                                                             <h6 class="text-muted">نام کاربری</h6>
@@ -146,7 +146,7 @@
                                                     <tr>
                                                         <td colspan="2">
                                                             <h6>عضویت</h6>
-                                                            <p class="fw-bold mt-2">{{ user.date_joined }}</p>
+                                                            <p class="fw-bold mt-2">{{ user.date_joined|jdate }}</p>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -196,29 +196,29 @@
                                                                 </div>
                                                                 <div class="order-item-product-list">
                                                                     <div class="order-item-product-list-item">
-                                                                        <img src="img/product/product-image1.jpg" alt=""
-                                                                            class="img-thumbnail" width="70"
-                                                                            height="70">
+                                                                        <img src="/static/img/product/product-image1.jpg" alt=""
+                                                                             class="img-thumbnail" width="70"
+                                                                             height="70">
                                                                     </div>
                                                                     <div class="order-item-product-list-item">
-                                                                        <img src="img/product/product-image3.jpg" alt=""
-                                                                            class="img-thumbnail" width="70"
-                                                                            height="70">
+                                                                        <img src="/static/img/product/product-image3.jpg" alt=""
+                                                                             class="img-thumbnail" width="70"
+                                                                             height="70">
                                                                     </div>
                                                                     <div class="order-item-product-list-item">
-                                                                        <img src="img/product/product-image4.jpg" alt=""
-                                                                            class="img-thumbnail" width="70"
-                                                                            height="70">
+                                                                        <img src="/static/img/product/product-image4.jpg" alt=""
+                                                                             class="img-thumbnail" width="70"
+                                                                             height="70">
                                                                     </div>
                                                                     <div class="order-item-product-list-item">
-                                                                        <img src="img/product/product-image5.jpg" alt=""
-                                                                            class="img-thumbnail" width="70"
-                                                                            height="70">
+                                                                        <img src="/static/img/product/product-image5.jpg" alt=""
+                                                                             class="img-thumbnail" width="70"
+                                                                             height="70">
                                                                     </div>
                                                                     <div class="order-item-product-list-item">
-                                                                        <img src="img/product/product-image6.jpg" alt=""
-                                                                            class="img-thumbnail" width="70"
-                                                                            height="70">
+                                                                        <img src="/static/img/product/product-image6.jpg" alt=""
+                                                                             class="img-thumbnail" width="70"
+                                                                             height="70">
                                                                     </div>
                                                                 </div>
                                                                 <div class="order-item-show">

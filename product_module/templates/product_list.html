@@ -2,13 +2,13 @@
 {% load poll_extras %}
 
 {% block title %}
-	محصولات
+    محصولات
 {% endblock %}
 
 
 
 {% block content %}
-        <div dir="rtl" class="">
+    <div dir="rtl" class="">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -19,6 +19,30 @@
                         <div class="swiper-wrapper">
 
 
+                            {% for product in products_new %}
+                                <div class="swiper-slide">
+                                    <div class="product-box-item">
+                                        <div class="product-box-item-img">
+                                            <a href="{% url 'product_detail' product.slug %}">
+                                                <img src="{{ product.image.url }}" alt="" class="img-fluid one-image">
+                                                <img src="{{ product.image.url }}" alt="" class="img-fluid two-image">
+                                            </a>
+                                        </div>
+                                        <a href="{% url 'product_detail' product.slug %}">
+                                            <div class="product-box-item-desc">
+                                                <div class="product-box-item-title">
+                                                    <h5>
+                                                        {{ product.title }}
+                                                    </h5>
+                                                </div>
+                                                <div class="product-box-price default">
+                                                    <span class="new-price">{{ product.price|number_digits }} تومان</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endfor %}
                             {% for product in products %}
                                 <div class="swiper-slide">
                                     <div class="product-box-item">

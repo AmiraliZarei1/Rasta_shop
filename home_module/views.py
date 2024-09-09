@@ -24,8 +24,7 @@ class Home(View):
 
     def post(self, request: HttpRequest):
         search = request.POST['search']
-        return redirect(reverse('search' , args=[search]))
-
+        return redirect(reverse('search', args=[search]))
 
 
 def search_page(request, search):
@@ -35,16 +34,11 @@ def search_page(request, search):
     })
 
 
-
-
 def header_render_partial(request):
-    if request.method == 'GET':
-        settings: SiteSettingModel = SiteSettingModel.objects.first()
-        return render(request, 'header.html', {
-            'settings': settings
-        })
-
-
+    settings: SiteSettingModel = SiteSettingModel.objects.first()
+    return render(request, 'header.html', {
+        'settings': settings
+    })
 
 
 def footer_render_partial(request):

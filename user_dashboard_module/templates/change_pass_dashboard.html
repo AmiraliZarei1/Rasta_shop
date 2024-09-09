@@ -22,7 +22,7 @@
                                                 class=" rounded-circle" alt="">
                                         </div>
                                         <div class="dashboard-user-info">
-                                            <h6 class="user-name">{{ user.first_name }}{{ user.last_name }}</h6>
+                                            <h6 class="user-name">{{ user.first_name }} {{ user.last_name }}</h6>
                                             <h6 class="text-muted user-number">{{ user.username }}</h6>
                                         </div>
                                         <div class="dashboard-user-btn">
@@ -62,15 +62,9 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="order.html" class="nav-link text-muted">
+                                                <a href="{% url 'user-basket' %}" class="nav-link text-muted">
                                                     <i class="bi bi-basket-fill"></i>
-                                                    <span>سفارشات</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="comments.html" class="nav-link text-muted">
-                                                    <i class="bi bi-pencil"></i>
-                                                    <span>نقد و نظرات</span>
+                                                    <span>سبد خرید</span>
                                                 </a>
                                             </li>
                                         </ul>
