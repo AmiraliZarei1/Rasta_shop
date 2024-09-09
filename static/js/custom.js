@@ -38,8 +38,8 @@ function check_count() {
     let count = parseInt(input.value)
     if (parseInt(count) < 1) {
         input.value = 1
-        input.style.border = '1px solid red'
-        alert('تعداد محصول نمیتواند کمتر از یک باشد')
+        // input.style.border = '1px solid red'
+        alert('عداد محصول نمی تواند کمتر از یک باشد')
     }
 }
 

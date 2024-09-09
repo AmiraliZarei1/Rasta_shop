@@ -24,13 +24,12 @@
         </div>
         <div class="col-lg-6 text-center d-none d-lg-block order-lg-2 order-3">
             <div class="top-menu-search ">
-                <form action="" method="get">
+                <form action="" method="post">
                     {% csrf_token %}
                     <div class="input-group">
-                        
-                        <input name="txt" type="text" class="search-txt rounded-pill"
+                        <input name="search" type="text" class="search-txt rounded-pill"
                                placeholder="نام محصول مورد نظر خود را وارد کنید">
-                        
+
                         <button type="submit" class="search-btn input-group-text rounded-pill">
                             <i class="bi bi-search"></i>
                         </button>
@@ -41,15 +40,6 @@
         <div class="col-lg-4 col-4 order-lg-3 order-3">
             <div class="top-menu-btn">
                 <ul class="nav">
-                    <li class="nav-item d-xl-block d-none">
-                        {#                            <button class="auth-btn-index pointer" data-bs-toggle="modal" data-bs-target="#loginModal">#}
-                        {#                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"#}
-                        {#                                     class="bi bi-person" viewBox="0 0 16 16">#}
-                        {#                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>#}
-                        {#                                </svg>#}
-                        {#                                ورود و عضویت#}
-                        {#                            </button>#}
-                    </li>
                     <li class="nav-item"><span class="auth-icon-responsive d-xl-none d-block pointer"
                                                data-bs-toggle="modal" data-bs-target="#loginModal">
                                     <div class="header-box">
@@ -63,7 +53,7 @@
                     <li class="nav-item position-relative">
                         {% if request.user.is_authenticated %}
                             <div class="header-box pointer" id="cartBtn">
-                            <i class="bi bi-box-arrow-right"></i>
+                                <i class="bi bi-box-arrow-right"></i>
                                 <span class="d-xl-block d-none"><a
                                         href="{% url 'logout' %}">خروج از حساب کاربری</a></span>
                             </div>
@@ -149,26 +139,30 @@
                                 </form>
                             </div>
                         </div>
-                                                            
-                                                        {% if request.user.is_authenticated %}
-                                                            <ul class="navbar-nav h-0">
-                                                        <li class="nav-item"><a class="nav-link" href="{% url 'Home' %}">خانه</a></li>
-                                                        <li class="nav-item"><a class="nav-link" href="{% url 'main-dashboard' %}">داشبورد</a></li>
-                                                        <li class="nav-item"><a class="nav-link" href=" {% url 'user-basket' %} ">سبد خرید</a></li>
-                                                        <li class="nav-item"><a class="nav-link" href=" {% url 'product_list' %} ">محصولات</a></li>
-                                                        <li class="nav-item"><a class="nav-link" href=" {% url 'article_list' %} ">مقالات</a></li>
-{#                                                        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">تماس با ما</a></li>#}
-{#                                                        <li class="nav-item"><a class="nav-link" href="{% url 'lagout' %}">خروج</a></li>#}
-                                                        {% else %}
-                                                        <li class="nav-item"><a href="{% url 'Home' %}">خانه</a></li>
-                                                        <li class="nav-item"><a href="{% url 'product_list' %}">محصولات</a></li>
-{#                                                        <li class="nav-item"><a href="{% url 'login' %}">ورود</a></li>#}
-{#                                                        <li class="nav-item"><a href="{% url 'register' %}">ثبت نام</a></li>#}
-                                                        <li class="nav-item"><a href=" {% url 'article_list' %} ">مقالات</a></li> 
-{#                                                        <li class="nav-item"><a href="{% url 'contact' %}">تماس با ما</a></li>#}
-                                                            </ul>
-                                                        {% endif %}
-                                                            
+
+                        {% if request.user.is_authenticated %}
+                            <ul class="navbar-nav h-0">
+                                <li class="nav-item"><a class="nav-link" href="{% url 'Home' %}">خانه</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'main-dashboard' %}">داشبورد</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href=" {% url 'user-basket' %} ">سبد خرید</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href=" {% url 'product_list' %} ">محصولات</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href=" {% url 'article_list' %} ">مقالات</a>
+                                </li>
+                                {#                                                        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">تماس با ما</a></li>#}
+                                {#                                                        <li class="nav-item"><a class="nav-link" href="{% url 'lagout' %}">خروج</a></li>#}
+                                {% else %}
+                                <li class="nav-item"><a href="{% url 'Home' %}">خانه</a></li>
+                                <li class="nav-item"><a href="{% url 'product_list' %}">محصولات</a></li>
+                                {#                                                        <li class="nav-item"><a href="{% url 'login' %}">ورود</a></li>#}
+                                {#                                                        <li class="nav-item"><a href="{% url 'register' %}">ثبت نام</a></li>#}
+                                <li class="nav-item"><a href=" {% url 'article_list' %} ">مقالات</a></li>
+                                {#                                                        <li class="nav-item"><a href="{% url 'contact' %}">تماس با ما</a></li>#}
+                            </ul>
+                        {% endif %}
+
                         </li>
                         </ul>
                     </div>

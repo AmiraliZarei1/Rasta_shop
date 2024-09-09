@@ -25,7 +25,7 @@ class MainDashboardView(View):
 @method_decorator(login_required , name='dispatch')
 class EditUserDashboardView(View):
     def get(self, request):
-        user:User = request.user
+        user = request.user
         edit_form = EditDashboardForm(instance=user)
         return render(request , 'edit_user_dashboard.html' , {
             'edit_form' : edit_form ,
